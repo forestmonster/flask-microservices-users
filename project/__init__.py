@@ -1,6 +1,7 @@
 import logging
 import os
 from flask import Flask, jsonify
+from flask_cors import CORS
 from flask_sqlalchemy import SQLAlchemy
 
 logging.basicConfig(level='WARN')
@@ -12,6 +13,9 @@ db = SQLAlchemy()
 def create_app():
     # Instantiate the Flask app
     app = Flask(__name__)
+
+    # Enable CORS
+    CORS(app)
 
     # Set the proper config
     app_settings = os.getenv('APP_SETTINGS')
